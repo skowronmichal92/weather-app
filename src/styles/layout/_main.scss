@@ -1,0 +1,10 @@
+.main {
+  padding: $main__padding;
+  min-height: calc(100vh - #{$footer__height});
+
+  @supports (flex-grow: 1) {
+    flex-grow: 1;
+    min-height: 0;
+  }
+
+}

@@ -1,0 +1,33 @@
+@mixin ui-button($type, $btn-color__bg, $btn-color__text) {
+  &.#{$type}.buttons .button,
+  &.#{$type}.button {
+    background-color: $btn-color__bg;
+    color: $btn-color__text;
+  }
+
+  &.#{$type}.buttons .button:hover,
+  &.#{$type}.button:hover {
+    background-color: darken($btn-color__bg, 2%);
+    color: $btn-color__text;
+  }
+
+  &.#{$type}.buttons .button:focus,
+  &.#{$type}.button:focus {
+    background-color: darken($btn-color__bg, 4%);
+    color: $btn-color__text;
+  }
+
+  &.#{$type}.buttons .button:active,
+  &.#{$type}.button:active {
+    background-color: darken($btn-color__bg, 6%);
+    color: $btn-color__text;
+  }
+
+  &.#{$type}.buttons .active.button,
+  &.#{$type}.buttons .active.button:active,
+  &.#{$type}.active.button,
+  &.#{$type}.button .active.button:active {
+    background-color: lighten($btn-color__bg, 2%);
+    color: $btn-color__text;
+  }
+}

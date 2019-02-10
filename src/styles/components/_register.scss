@@ -1,0 +1,26 @@
+.register {
+
+  @include pageWidth(sm) {
+    max-width: 100rem;
+  }
+
+  &__form {
+    @supports (display: grid) {
+      @include pageWidth(sm) {
+        display: grid;
+        grid-column-gap: 2rem;
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  }
+
+  &__btns {
+    @supports (display: grid) {
+      @include pageWidth(sm) {
+        grid-column: 1 / 3;
+      }
+    }
+
+  }
+
+}

@@ -1,0 +1,60 @@
+.tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: .5rem;
+  width: 50%;
+  height: 8rem;
+
+  @include pageWidth(xxs) {
+    width: calc(100%/3);
+  }
+
+  @include pageWidth(md) {
+    width: 50%;
+  }
+
+  &__value {
+    font-size: 2.5rem;
+
+    @include pageWidth(md) {
+      font-size: 3.5rem;
+    }
+  }
+
+  &__description {
+    font-size: 1.5rem;
+    text-align: center;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  &__arrow {
+    font-size: 2rem;
+  }
+
+  &--big {
+    width: 50%;
+    height: 15rem;
+
+    @include pageWidth(md) {
+      width: 25%;
+      height: 22rem;
+    }
+  }
+
+  &--big &__value {
+    font-size: 5rem;
+
+    @include pageWidth(md) {
+      font-size: 9rem;
+    }
+  }
+
+  &__icon-weather {
+    max-width: 80%;
+    max-height: 80%;
+    padding: .5rem;
+  }
+}

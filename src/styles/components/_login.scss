@@ -1,0 +1,16 @@
+.login {
+  margin: auto;
+
+  @include pageHeight(xs) {
+    padding-top: 5rem;
+  }
+
+  @include pageHeight(lg) {
+    padding-top: 10rem;
+  }
+
+  &__info {
+    margin-top: 2rem;
+  }
+
+}

@@ -1,0 +1,70 @@
+$chart-btn__padding: 1rem;
+
+.chart {
+  padding: 1rem;
+
+  @include pageWidth(md) {
+    padding: 6rem;
+  }
+
+  &__title {
+    text-align: center;
+    margin-bottom: 3rem;
+
+    @include pageWidth(md) {
+      font-size: 3rem
+    }
+  }
+
+  &__series {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 2rem 0;
+
+    > * {
+      margin: .5rem 1rem;
+    }
+  }
+
+  &__series-checkbox {
+    padding: 0.7rem;
+    border-radius: 0.5rem;
+  }
+
+  &__no-data {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 45vw;
+    max-height: 45rem;
+  }
+
+  &__btns {
+    margin-top: 2rem;
+    display: flex;
+    // justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  &__btns > .ui.button {
+    width: calc(50% - 2*#{$chart-btn__padding});
+    margin: .5rem $chart-btn__padding;
+
+    @include pageWidth(xxs) {
+      width: calc(33% - 2*#{$chart-btn__padding});
+    }
+
+    @include pageWidth(xs) {
+      width: calc(25% - 2*#{$chart-btn__padding});
+    }
+
+    @include pageWidth(md) {
+      width: calc(20% - 2*#{$chart-btn__padding});
+    }
+
+    @include pageWidth(lg) {
+      width: calc(16% - 2*#{$chart-btn__padding});
+    }
+  }
+}

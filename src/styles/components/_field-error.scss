@@ -1,0 +1,14 @@
+.srv-validation-message {
+  color: #e64040;
+  margin-top: .5rem;
+}
+
+.ui.form {
+  .srv-validation-message {
+    order: 1;
+
+    ~ input {
+      border: 1px solid #e64040!important;
+    }
+  }
+}

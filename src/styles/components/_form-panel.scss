@@ -1,0 +1,15 @@
+.form-panel {
+  max-width: $form__max-width;
+  padding: 2rem 0;
+
+  &__header {
+    text-align: center;
+    font-size: 1.6rem;
+    margin: 2rem 0;
+  }
+
+  &__btns {
+    margin-top: 2rem;
+    text-align: center;
+  }
+}

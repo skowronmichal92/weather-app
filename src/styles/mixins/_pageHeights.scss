@@ -1,0 +1,20 @@
+$heightBreakpoints: (
+  'xxs': 25em, //400px
+  'xs': 31.25em, //500px
+	'sm': 37.5em, //600px
+	'md': 48em, //768px
+	'lg': 62em, //992px
+	'xlg': 67.5em, //1080px
+);
+
+@mixin pageHeight($height, $type: min) {
+  @if map-has-key($heightBreakpoints, $height) {
+		$height: map-get($heightBreakpoints, $height);
+		@if $type == max {
+			$height: $height - 1px;
+		}
+		@media only screen and (#{$type}-height: $height) {
+			@content;
+		}
+	}
+}

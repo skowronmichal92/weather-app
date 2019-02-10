@@ -1,0 +1,38 @@
+body {
+  .ui {
+
+    &.form .field {
+      display: flex;
+      flex-direction: column;
+    }
+
+    &.form .field > label {
+      font-size: $font__size;
+      color: $color__text;
+    }
+
+    &.form input:not([type]),
+    &.form input[type=date],
+    &.form input[type=datetime-local],
+    &.form input[type=email],
+    &.form input[type=file],
+    &.form input[type=number],
+    &.form input[type=password],
+    &.form input[type=search],
+    &.form input[type=tel],
+    &.form input[type=text],
+    &.form input[type=time],
+    &.form input[type=url] {
+      font-size: $font__size;
+    }
+
+    &.checkbox label {
+      padding-left: 2.3rem;
+    }
+
+    &.message {
+      font-size: 1.2rem;
+    }
+  }
+
+}

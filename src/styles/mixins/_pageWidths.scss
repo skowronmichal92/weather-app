@@ -1,0 +1,23 @@
+$widthBreakpoints: (
+  'xxs': 30em, //480px
+  'xs': 37.5em, //600px
+  'sm': 48em, //768px
+  'md': 62em, //992px
+  'hd': 67.5em, //1080px
+  'lg': 75em, //1200px
+  'xlg': 90em, //1440px
+  'xxlg': 105em, //1680px
+  'fullhd': 120em, //1920px
+);
+
+@mixin pageWidth($width, $type: min) {
+  @if map-has-key($widthBreakpoints, $width) {
+		$width: map-get($widthBreakpoints, $width);
+		@if $type == max {
+			$width: $width - 1px;
+		}
+		@media only screen and (#{$type}-width: $width) {
+			@content;
+		}
+	}
+}

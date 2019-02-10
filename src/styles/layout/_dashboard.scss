@@ -1,0 +1,36 @@
+.dashboard {
+
+  &__select {
+    width: 100%;
+
+    @include pageWidth(xxs) {
+      width: 50%;
+    }
+
+    @include pageWidth(sm) {
+      width: 40%;
+    }
+
+    @include pageWidth(md) {
+      width: 33%;
+    }
+  }
+
+  &__tiles {
+    margin-top: 5rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  &__tiles--secondary {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+
+    @include pageWidth(md) {
+      width: 50%;
+    }
+  }
+
+}

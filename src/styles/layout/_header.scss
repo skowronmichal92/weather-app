@@ -1,0 +1,34 @@
+.header-nav {
+  padding: $main__padding;
+  border-bottom: 1px solid $color__border;
+  position: fixed;
+  height: $header__height;
+  width: 100vw;
+  z-index: 100;
+  background: $color__bg;
+  width: 100%;
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+  }
+
+  &__logo {
+    height: 3rem;
+    margin-right: .5rem;
+  }
+
+  &__title {
+    font-size: 2rem;
+    // font-family: cursive;
+    margin: 0;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    color: $color__main;
+  }
+}

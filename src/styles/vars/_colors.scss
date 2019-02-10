@@ -1,0 +1,26 @@
+$color__white: hsl(255, 255, 255);
+
+$color__black--20: hsl(0, 0, 20);
+$color__black--26: hsl(0, 0, 26);
+
+$color__grey--83: hsl(0, 0, 83);
+
+// $color__orange--50: hsl(40, 100, 50);
+
+$color__blue--50: hsl(220, 100, 50);
+
+$color__pink--62: hsl(315, 58, 62);
+
+
+$color__text: $color__black--26;
+$color__text--light: $color__white;
+
+$color__main: $color__pink--62;
+$color__secondary: $color__blue--50;
+
+$color__bg: $color__white;
+$color__bg--dark: $color__black--20;
+$color__bg--light: $color__grey--83;
+// $color__bg--dark: $color__blue--50;
+
+$color__border: $color__grey--83;

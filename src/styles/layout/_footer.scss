@@ -1,0 +1,19 @@
+.footer {
+  padding: $main__padding;
+  height: $footer__height;
+  background-color: $color__bg--dark;
+  color: $color__text--light;
+
+  &__container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    // border-top: 1px solid $color__border;
+  }
+
+  &__desc {
+    margin: 0;
+    font-weight: normal;
+  }
+}

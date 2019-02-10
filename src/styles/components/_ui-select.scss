@@ -1,0 +1,12 @@
+body {
+  .ui {
+
+    &.selection.dropdown .menu {
+      max-height: 15rem;
+    }
+
+    &.dropdown .menu > .item {
+      font-size: 1.4rem;
+    }
+  }
+}

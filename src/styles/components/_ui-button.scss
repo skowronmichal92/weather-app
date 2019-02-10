@@ -1,0 +1,8 @@
+.ui {
+  &.button {
+    font-size: 1.2rem;
+  }
+
+  @include ui-button(primary, $color__secondary, $color__text--light);
+  @include ui-button(secondary, $color__main, $color__text--light);
+}
