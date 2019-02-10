@@ -16,11 +16,25 @@
     }
   }
 
-  &__tiles {
+  &__title {
     margin-top: 5rem;
+    text-align: center;
+    font-size: 4rem;
+
+    @include pageWidth(md) {
+      font-size: 5rem;
+    }
+  }
+
+  &__tiles {
+    margin-top: 3rem;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    
+    @include pageWidth(md) {
+      font-size: 5rem;
+    }
   }
 
   &__tiles--secondary {

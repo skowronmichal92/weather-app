@@ -4,11 +4,13 @@ body {
     &.form .field {
       display: flex;
       flex-direction: column;
+      margin: 1rem 0;
     }
 
     &.form .field > label {
       font-size: $font__size;
       color: $color__text;
+      margin: .5rem 0;
     }
 
     &.form input:not([type]),

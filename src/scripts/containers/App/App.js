@@ -14,11 +14,24 @@ import { CityContext } from '../../store/context/context';
 
 class App extends Component {
   state = {
-    city: 'Kraków, POL',
+    cityDesc: 'Kraków, POL',
+    cityValue: 'Kraków,pl',
   }
 
-  changeCity = city => {
-    this.setState({ city });
+  static childContextTypes = {
+    cityDesc: PropTypes.string,
+    cityValue: PropTypes.string
+  };
+
+  getChildContext() {
+    return {
+      cityDesc: this.state.cityDesc,
+      cityValue: this.state.cityValue
+    }
+  }
+
+  changeCity = (cityDesc, cityValue) => {
+    this.setState({ cityDesc, cityValue });
   }
 
   render() {
@@ -44,7 +57,8 @@ class App extends Component {
               <Redirect to="/login" />
             ) : (
               <CityContext.Provider value={{
-                city: this.state.city,
+                cityDesc: this.state.cityDesc,
+                cityValue: this.state.cityValue,
                 changeCity: this.changeCity
               }}>
                 <Dashboard/>
@@ -57,22 +71,6 @@ class App extends Component {
     );
   }
 
-  // render() {
-  //   return (
-  //     <Layout>
-  //       <Switch>
-  //         <Route path='/register' component={Register} />
-  //         <Route path='/login' component={Login} />
-  //         <CityContext.Provider value={{
-  //           city: this.state.city,
-  //           changeCity: this.changeCity
-  //         }}>
-  //           <Route path='/' component={Dashboard}/>
-  //         </CityContext.Provider>
-  //       </Switch>
-  //     </Layout>
-  //   );
-  // }
 }
 
 App.propTypes = {

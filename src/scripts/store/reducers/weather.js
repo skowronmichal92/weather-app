@@ -51,6 +51,19 @@ const splitArrayByIndexes = (arr, indexes) => {
   return splittedArray;
 }
 
+const fillArrayEmptySpaces = arr => {
+  // const daysNum = arr.length;
+  const dailyMesurementsNum = arr[1].length;
+  const firstDayMesurementsNum = arr[0].length;
+  // const lastDayMesurementsNum = arr[daysNum - 1].length;
+
+  const filledFirstDayMeasurements = [...arr[0], ...arr[1].slice(0, dailyMesurementsNum - firstDayMesurementsNum)];
+
+  const newArr = [...arr];
+  newArr[0] = filledFirstDayMeasurements;
+  return newArr;
+}
+
 const weather = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.GET_WEATHER: {
@@ -136,10 +149,24 @@ const weather = (state = initialState, action) => {
         times: splitArrayByIndexes(humidity5Days.times, measurementsCount),
       };
 
+      const temp5DaysFilled = {
+        temps: fillArrayEmptySpaces(temp5DaysSplitted.temps),
+        temps_min: fillArrayEmptySpaces(temp5DaysSplitted.temps_min),
+        temps_max: fillArrayEmptySpaces(temp5DaysSplitted.temps_max),
+        days: temp5DaysSplitted.days,
+        times: fillArrayEmptySpaces(temp5DaysSplitted.times),
+      };
+
+      const humidity5DaysFilled = {
+        humidities: fillArrayEmptySpaces(humidity5DaysSplitted.humidities),
+        days: humidity5DaysSplitted.days,
+        times: fillArrayEmptySpaces(humidity5DaysSplitted.times),
+      };
+
       return update(state, {
         current: {$set: currentWeatherData},
-        temp5Days: {$set: temp5DaysSplitted},
-        humidity5Days: {$set: humidity5DaysSplitted},
+        temp5Days: {$set: temp5DaysFilled},
+        humidity5Days: {$set: humidity5DaysFilled},
         loading: {$set: false},
       });
     }

@@ -51,18 +51,23 @@ const citiesOptions = [
   }
 ];
 
-const citiesFullMap = _.keyBy(citiesOptions, 'text');
-const citiesShortMap = _.keyBy(citiesOptions, 'value');
+const citiesValueMap = _.keyBy(citiesOptions, 'value');
 
 class Dashboard extends Component {
+  static contextTypes = {
+    cityDesc: PropTypes.string,
+    cityValue: PropTypes.string
+  };
+
   componentDidMount() {
     updatePageTitle('Dashboard');
-    this.props.getWeather(citiesOptions[0].value);
+    this.props.getWeather(this.context.cityValue);
   }
 
-  onCityChange = (city, changeCity) => {
-    changeCity(citiesShortMap[city].text);
-    this.props.getWeather(city);
+  onCityChange = (cityValue, changeCity) => {
+    const cityDesc = citiesValueMap[cityValue].text;
+    changeCity(cityDesc, cityValue);
+    this.props.getWeather(cityValue);
   }
 
   render() {
@@ -73,18 +78,23 @@ class Dashboard extends Component {
       <div className="dashboard container">
 
         <CityContext.Consumer>
-          {({city, changeCity}) => {
-            const cityShort = citiesFullMap[city].value;
+          {({cityValue, changeCity}) => {
             return (
               <Select
                 className="dashboard__select"
                 placeholder='Select city'
                 options={citiesOptions}
-                defaultValue={cityShort}
+                defaultValue={cityValue}
                 onChange={(e, data) => this.onCityChange(data.value, changeCity)} />
             );
           }}
         </CityContext.Consumer>
+
+        <h2 className="dashboard__title">
+          <CityContext.Consumer>
+          {({cityDesc}) => cityDesc}
+          </CityContext.Consumer>
+        </h2>
 
         <div className="dashboard__tiles">
           {showWeather ? <Tiles weatherData={this.props.current}/> : this.props.loading ? <Loader active/> : <ErrorLoading /> }

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import PropTypes from 'prop-types';
+import { Button } from 'semantic-ui-react';
 
 import MediaQuery from 'react-responsive';
 
@@ -50,7 +51,7 @@ class Header extends Component {
           {this.props.auth ? (
             <div className='user-panel'>
               <div><span><strong>{this.props.user}</strong></span></div>
-              <div><a onClick={this.logOutHandler}>[Log Out]</a></div>
+              <div><Button secondary onClick={this.logOutHandler}>Log Out</Button></div>
             </div>
           ) : (
             <nav className='nav'>
