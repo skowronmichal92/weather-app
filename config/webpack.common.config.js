@@ -1,6 +1,6 @@
 const path = require('path');
 
-const dist = '../dist';
+const dist = '../docs';
 
 module.exports = {
   entry: {

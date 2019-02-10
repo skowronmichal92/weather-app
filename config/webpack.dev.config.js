@@ -3,7 +3,7 @@ const merge = require('webpack-merge'),
       HtmlWebpackPlugin = require('html-webpack-plugin'),
       MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-// const dist = '../dist';
+const dist = '../docs';
 
 module.exports = merge(common, {
   mode: 'development',
@@ -69,7 +69,7 @@ module.exports = merge(common, {
     ]
   },
   devServer: {
-    contentBase: '../dist/',
+    contentBase: dist,
     open: true,
     publicPath: '/',
     historyApiFallback: true,

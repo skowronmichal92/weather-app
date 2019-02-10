@@ -10,6 +10,8 @@ import * as actions from '../../../store/actions';
 import NavItem from './NavItem/NavItem';
 import { pageWidths } from '../../../other/mediaQuery';
 
+import {  STORAGE_USER_LOGGED } from '../../../other/constants.js';
+
 import logo from '../../../../images/logo.svg';
 
 const links = [
@@ -26,8 +28,14 @@ const links = [
 
 
 class Header extends Component {
+
+  logOutHandler = () => {
+    localStorage.removeItem(STORAGE_USER_LOGGED);
+    this.props.logOut();
+  }
+
   render() {
-    console.log(this.props.auth);
+
     return (
       <header className='header-nav'>
         <div className='container header-nav__container'>
@@ -42,7 +50,7 @@ class Header extends Component {
           {this.props.auth ? (
             <div className='user-panel'>
               <div><span><strong>{this.props.user}</strong></span></div>
-              <div><a onClick={this.props.logOut}>[Log Out]</a></div>
+              <div><a onClick={this.logOutHandler}>[Log Out]</a></div>
             </div>
           ) : (
             <nav className='nav'>

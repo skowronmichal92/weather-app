@@ -2,7 +2,7 @@
 
 import * as actionTypes from './actionTypes';
 import axios from 'axios';
-import _tempData from '../data/_tempData';
+// import _tempData from '../data/_tempData';
 
 export const getWeatherStart = () => {
   return {
@@ -35,14 +35,14 @@ export const getWeather = (query) => {
 
     dispatch(getWeatherStart());
 
-    // axios.get(url, {params})
-    //   .then(response => {
-    //     dispatch(getWeatherDone(response.data));
-    //   })
-    //   .catch(function () {
-    //     dispatch(getWeatherFail());
-    //   });
+    axios.get(url, {params})
+    .then(response => {
+      dispatch(getWeatherDone(response.data));
+    })
+    .catch(function () {
+      dispatch(getWeatherFail());
+    });
 
-    dispatch(getWeatherDone(_tempData));
+    // dispatch(getWeatherDone(_tempData));
   }
 }

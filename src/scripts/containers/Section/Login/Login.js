@@ -11,7 +11,7 @@ import * as actions from '../../../store/actions';
 import Field from '../../../components/UI/Field/Field';
 
 import { updatePageTitle } from '../../../other/utils.js';
-import { STORAGE_USER_DATA } from '../../../other/constants.js';
+import { STORAGE_USER_DATA, STORAGE_USER_LOGGED } from '../../../other/constants.js';
 
 const fields = [
   {
@@ -58,13 +58,25 @@ class Login extends Component {
     });
   }
 
-  componentDidMount() {
-    updatePageTitle('Log In');
+  saveLoggedUser() {
+    localStorage.setItem(STORAGE_USER_LOGGED, JSON.stringify(this.state.loginData));
   }
 
-  componentDidUpdate() {
-    if (this.props.auth) {
-      this.props.history.push('/dashboard');
+  loadLoggedUSer() {
+    const storageLoginData = localStorage.getItem(STORAGE_USER_LOGGED);
+    const storageUserData = localStorage.getItem(STORAGE_USER_DATA);
+
+    if (storageLoginData && storageUserData) {
+      const loginData = JSON.parse(storageLoginData);
+      const userData = JSON.parse(storageUserData);
+
+      if (userData[loginData.email]) {
+        this.props.logIn(loginData.email);
+      }
+      else {
+        localStorage.removeItem(STORAGE_USER_LOGGED);
+      }
+
     }
   }
 
@@ -84,6 +96,7 @@ class Login extends Component {
             userNotExists: false,
             invalidPassword: false
           });
+          this.saveLoggedUser();
           this.props.logIn(login.email);
         }
         else {
@@ -112,9 +125,21 @@ class Login extends Component {
 
   }
 
+  componentDidMount() {
+    updatePageTitle('Log In');
+
+    this.loadLoggedUSer();
+  }
+
+  componentDidUpdate() {
+    if (this.props.auth) {
+      this.props.history.push('/');
+    }
+  }
+
   render() {
     const formValid = !this.state.userNotExists && !this.state.invalidPassword;
-    console.log('login');
+
     return (
       <div className="login form-panel">
         <div className="form-panel__header">

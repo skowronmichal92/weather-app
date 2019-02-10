@@ -8,7 +8,7 @@ const webpack = require('webpack'),
   UglifyJSPlugin = require('uglifyjs-webpack-plugin');
   // ReplaceInFileWebpackPlugin = require('replace-in-file-webpack-plugin');
 
-const dist = './dist';
+const dist = './docs';
 
 module.exports = merge(common, {
   mode: 'production',

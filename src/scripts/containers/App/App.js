@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import PropTypes from 'prop-types';
@@ -25,13 +25,31 @@ class App extends Component {
     return (
       <Layout>
         <Switch>
-          <Route path='/register' component={Register} />
-          <Route path='/login' component={Login} />
+          <Route exact path="/register" render={() => (
+            this.props.auth ? (
+              <Redirect to="/" />
+            ) : (
+              <Register/>
+            )
+          )}/>
+          <Route exact path="/login" render={() => (
+            this.props.auth ? (
+              <Redirect to="/" />
+            ) : (
+              <Login/>
+            )
+          )}/>
           <CityContext.Provider value={{
             city: this.state.city,
             changeCity: this.changeCity
           }}>
-            <Route path='/' component={Dashboard}/>
+            <Route exact path="/" render={() => (
+              !this.props.auth ? (
+                <Redirect to="/login" />
+              ) : (
+                <Dashboard/>
+              )
+            )}/>
           </CityContext.Provider>
         </Switch>
       </Layout>

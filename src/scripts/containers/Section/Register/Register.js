@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router';
 
+import PropTypes from 'prop-types';
 import { Button, Form, Message } from 'semantic-ui-react';
 import SimpleReactValidator from 'simple-react-validator';
 
@@ -120,6 +122,7 @@ class Register extends Component {
       if (this.state.userData.password === this.state.userData.repassword) {
         this.setState({passwordsDifferent: false});
         this.saveAccount();
+        this.props.history.push('/');
       }
       else {
         this.setState({passwordsDifferent: true});
@@ -175,4 +178,8 @@ class Register extends Component {
   }
 }
 
-export default Register;
+Register.propTypes = {
+  history: PropTypes.object,
+};
+
+export default withRouter(Register);

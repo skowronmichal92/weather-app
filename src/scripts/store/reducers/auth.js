@@ -3,8 +3,6 @@ import * as actionTypes from '../actions/actionTypes';
 const initialState = {
   auth: false,
   user: null
-  // auth: true,
-  // user: 'user.ylv@gmail.com'
 };
 
 const auth = (state = initialState, action) => {
