@@ -25,7 +25,7 @@ export const getWeatherFail = () => {
 
 export const getWeather = (query) => {
   return dispatch => {
-    const url = 'http://api.openweathermap.org/data/2.5/forecast';
+    const url = 'https://api.openweathermap.org/data/2.5/forecast';
     const params = {
       q: query,
       mode: 'json',

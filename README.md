@@ -1,5 +1,5 @@
 # WeatherApp
-
+[I'm an inline-style link](https://www.google.com)
 ## Usage
 
 1. Open project folder in console and install project packages running command `npm install`
@@ -9,4 +9,5 @@
 
 ## Browser tests
 - Google Chrome 71
+- Firefox 65
 - Internet Explorer 11

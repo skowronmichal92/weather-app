@@ -39,18 +39,19 @@ class App extends Component {
               <Login/>
             )
           )}/>
-          <CityContext.Provider value={{
-            city: this.state.city,
-            changeCity: this.changeCity
-          }}>
-            <Route exact path="/" render={() => (
-              !this.props.auth ? (
-                <Redirect to="/login" />
-              ) : (
+          <Route exact path="/" render={() => (
+            !this.props.auth ? (
+              <Redirect to="/login" />
+            ) : (
+              <CityContext.Provider value={{
+                city: this.state.city,
+                changeCity: this.changeCity
+              }}>
                 <Dashboard/>
-              )
-            )}/>
-          </CityContext.Provider>
+              </CityContext.Provider>
+            )
+          )}/>
+          <Redirect to="/" />
         </Switch>
       </Layout>
     );
